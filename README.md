@@ -79,6 +79,13 @@ Isso irá gerar um arquivo .uf2 (por exemplo, pico-pwm-servo.uf2) pronto para se
 4 - Carregue o arquivo .c (código-fonte) ou .uf2 (firmware compilado).
 5 - Clique em Start Simulation para observar o braço do servo movendo-se conforme o código.
 
+### **4️⃣ Teste na Plataforma BitDogLab (LED Azul no pino 12)**
+Para fins de demonstração em outra plataforma, o mesmo código foi testado no BitDogLab, substituindo o servo motor pelo LED azul conectado ao GPIO 12.
+Durante a execução, o programa continua variando o duty cycle do PWM (de 500µs a 2400µs). Isso faz com que o tempo em que o LED permanece ligado dentro de cada período de 20ms também varie, resultando em mudanças na intensidade aparente do LED:
+
+- Em pulsos menores (próximos a 500µs), o LED permanece ligado por um intervalo curto em cada ciclo de 20ms, ficando mais fraco.
+- Em pulsos maiores (próximos a 2400µs), o LED fica ligado por quase todo o período, aparentando maior intensidade.
+Assim, embora o código seja originalmente pensado para controlar um servo, a variação do pulso PWM pode ser observada como variação de brilho de um LED, na ausência do servo motor físico.
 
 ## 🛠 **Como o Código Funciona**
 
