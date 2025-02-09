@@ -1,47 +1,40 @@
 # Controle de Servomotor por PWM no Raspberry Pi Pico
 
-Este projeto utiliza um **Raspberry Pi Pico** para controlar um **servo motor** através de um sinal **PWM** com frequência de **50 Hz**.  
-Ele posiciona o servo em **0°, 90° e 180°** (mantendo cada posição por 5 segundos) e, em seguida, faz um movimento de varredura entre 0° e 180°.
+Este projeto demonstra como gerar um sinal **PWM** de **50 Hz** (20ms) no **Raspberry Pi Pico** para controlar um **servo motor**, utilizando a **emulação no Wokwi** (pois não temos o servo físico em mãos).
 
 ---
 
 ## 📌 **Funcionalidades**
-✅ Gera um sinal **PWM** de 50 Hz no **GPIO 22**.  
-✅ Posiciona o servo em **180° (2.4ms)**, **90° (1.47ms)** e **0° (0.5ms)** por 5 segundos cada.  
-✅ Realiza **movimentação contínua** de 0° a 180° (e volta) usando **incrementos de 5µs** a cada 10ms.  
+- Gera um sinal **PWM** de 50 Hz no **GPIO 22**.
+- Posiciona o servo em **180° (2.4ms)**, **90° (1.47ms)** e **0° (0.5ms)**, cada posição sendo mantida por **5 segundos**.
+- Executa uma **varredura contínua** de 0° a 180° (e volta) em incrementos de **5µs** a cada **10ms**, produzindo um movimento suave.
 
 ---
 
-## 🎥 **Demonstração**
-Confira o funcionamento do projeto neste vídeo (exemplo/placeholder):
-
-[![Vídeo de demonstração](https://img.youtube.com/vi/TpAWgn8k8IY/0.jpg)](https://youtu.be/TpAWgn8k8IY)
-
----
-
-## 🛠 **Componentes Necessários**
-- 🖥 **Raspberry Pi Pico**  
-- 🔌 **Micro Servo (SG90 ou similar)**  
-- 📏 **Fios de conexão**  
-- ⚡ **Fonte de alimentação** (pode ser 3.3V ou 5V, dependendo do servo, mas geralmente 5V é recomendado)
+## 🛠 **Componentes (Simulados)**
+- **Raspberry Pi Pico** (no Wokwi)  
+- **Micro Servo** conectado ao **GPIO 22**, GND e 3V3/5V (tudo virtual no Wokwi)
 
 ---
 
-## 🔌 **Esquema de Conexão**
-| Componente        | Pino no Pico     |
-|-------------------|------------------|
-| Servo (Sinal)     | GPIO 22          |
-| Servo (VCC)       | 3V3 ou 5V*       |
-| Servo (GND)       | GND              |
+## 🔌 **Esquema de Conexão (Wokwi)**
+| Componente    | Pino no Pico |
+|---------------|--------------|
+| Servo (Sinal) | GPIO 22      |
+| Servo (VCC)   | 5V ou 3V3    |
+| Servo (GND)   | GND          |
 
-> **Atenção**: Em um cenário real, certifique-se de que a fonte de alimentação do servo seja compatível e que **GND** do servo e do Pico estejam em comum.  
+No **Wokwi**, basta inserir:
+1. Um **Raspberry Pi Pico**;
+2. Um **Micro Servo** (SG90 ou similar);
+3. Conectá-lo ao **GPIO 22** (sinal), **GND** e **3V3** ou **5V**.
 
 ---
 
 ## ⚙ **Configuração do Ambiente**
 
-### **1️⃣ Instalar o SDK do Raspberry Pi Pico**
-Se ainda não tiver o SDK do Pico configurado, siga as instruções no [guia oficial](https://datasheets.raspberrypi.com/pico/getting-started-with-pico.pdf).
+### **1️⃣ Instalar o SDK do Raspberry Pi Pico** (opcional, caso deseje compilar localmente)
+Siga as instruções do [Guia Oficial](https://datasheets.raspberrypi.com/pico/getting-started-with-pico.pdf) se quiser rodar em hardware real.
 
 **No Linux**:
 ```
@@ -79,11 +72,13 @@ make
 ```
 Isso irá gerar um arquivo .uf2 (por exemplo, pico-pwm-servo.uf2) pronto para ser carregado no Raspberry Pi Pico.
 
-### **3️⃣ Gravar no Raspberry Pi Pico**
-1- Conecte o Pico ao computador segurando o botão BOOTSEL.
-2- Ele será detectado como um dispositivo de armazenamento USB.
-3- Arraste e solte o arquivo .uf2 gerado na pasta build/ para este dispositivo.
-4- O Pico irá reiniciar automaticamente e executar o código!
+### **3️⃣ Executar no Wokwi**
+1 - Acesse Wokwi.com.
+2 - Crie um projeto selecionando Raspberry Pi Pico.
+3 - Adicione um Micro Servo e conecte-o ao GPIO 22, além de GND e 3V3/5V.
+4 - Carregue o arquivo .c (código-fonte) ou .uf2 (firmware compilado).
+5 - Clique em Start Simulation para observar o braço do servo movendo-se conforme o código.
+
 
 ## 🛠 **Como o Código Funciona**
 
