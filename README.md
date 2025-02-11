@@ -11,6 +11,13 @@ Este projeto demonstra como gerar um sinal **PWM** de **50 Hz** (20ms) no **Rasp
 
 ---
 
+## 🎥 Demonstração em Vídeo
+📹 Assista ao vídeo de demonstração do projeto:
+
+[![Vídeo de Demonstração](https://img.youtube.com/vi/OkJHKPgLNPc/0.jpg)](https://www.youtube.com/watch?v=OkJHKPgLNPc)
+
+---
+
 ## 🛠 **Componentes (Simulados)**
 - **Raspberry Pi Pico** (no Wokwi)  
 - **Micro Servo** conectado ao **GPIO 22**, GND e 3V3/5V (tudo virtual no Wokwi)
